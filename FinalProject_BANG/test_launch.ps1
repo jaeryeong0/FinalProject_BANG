@@ -41,8 +41,8 @@ if ($java11bin) {
 }
 
 # Paths
-$lib = Join-Path $root "project\lib\lanterna-3.1.2.jar"
-$bin = Join-Path $root "project\bin"
+$lib = Join-Path $root "lib\lanterna-3.1.2.jar"
+$bin = Join-Path $root "bin"
 $cp  = "$bin;$lib"
 
 # Compile
@@ -51,7 +51,7 @@ Write-Host "[1/2] Compiling..." -ForegroundColor Yellow
 
 if (-not (Test-Path $bin)) { New-Item -ItemType Directory $bin | Out-Null }
 
-$sources = Get-ChildItem -Recurse (Join-Path $root "project") -Filter "*.java" |
+$sources = Get-ChildItem -Recurse (Join-Path $root "src") -Filter "*.java" |
            Where-Object { $_.FullName -notlike "*\bin\*" } |
            Select-Object -ExpandProperty FullName
 
